@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VG Indumentaria — Ropa deportiva</title>
+<meta name="description" content="VG Indumentaria: remeras, camperas, pantalones, shorts, calzas, medias y accesorios deportivos. Consultá precio y disponibilidad por WhatsApp o Instagram.">
+<link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+<a href="#catalogo" class="skip-link">Ir al catálogo</a>
+
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="#top" class="nav__brand">
+      <img src="assets/logo.png" alt="VG Indumentaria" class="nav__logo">
+      <span class="nav__brand-text">VG <em>indumentaria</em></span>
+    </a>
+
+    <nav class="nav__links" id="navLinks">
+      <a href="#catalogo">Catálogo</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+
+    <div class="nav__right">
+      <button class="nav__cart" id="cartToggle" aria-label="Abrir selección">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h2l2.4 12.2a2 2 0 0 0 2 1.8h8.2a2 2 0 0 0 2-1.6L21 8H6"/><circle cx="10" cy="21" r="1.4"/><circle cx="18" cy="21" r="1.4"/></svg>
+        <span class="nav__cart-count" id="cartCount">0</span>
+      </button>
+
+      <button class="nav__burger" id="navBurger" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero__v" aria-hidden="true">
+    <span class="hero__v-shape hero__v-shape--back"></span>
+    <span class="hero__v-shape hero__v-shape--front"></span>
+  </div>
+  <div class="hero__content">
+    <p class="hero__eyebrow">Indumentaria · Deportivo</p>
+    <h1 class="hero__title">Se mueve<br>como vos<span>.</span></h1>
+    <p class="hero__text">Remeras, camperas, calzas y accesorios pensados para entrenar. Armá tu selección y consultamos precio y stock al toque, directo por WhatsApp o Instagram.</p>
+    <a href="#catalogo" class="btn btn--primary">Ver catálogo</a>
+  </div>
+</section>
+
+<section class="catalog" id="catalogo">
+  <div class="catalog__header">
+    <div>
+      <p class="section-eyebrow">Catálogo</p>
+      <h2>Elegí, sumá al carrito<br>y consultamos por vos</h2>
+    </div>
+  </div>
+
+  <div class="catalog__filters" id="filters">
+    <button class="filter is-active" data-cat="todos" type="button">Todos</button>
+  </div>
+
+  <p class="catalog__status" id="catalogStatus">Cargando productos…</p>
+
+  <div class="grid" id="productGrid"></div>
+</section>
+
+<section class="contact" id="contacto">
+  <div class="contact__v" aria-hidden="true"></div>
+  <div class="contact__inner">
+    <p class="section-eyebrow section-eyebrow--light">Contacto</p>
+    <h2>¿Tenés dudas sobre<br>algún producto?</h2>
+    <p>Escribinos directamente y te confirmamos precio, talles y stock disponible.</p>
+    <div class="contact__actions">
+      <a class="btn btn--primary" id="waDirect" href="#" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+      <a class="btn btn--outline-light" id="igDirect" href="#" target="_blank" rel="noopener">Escribir por Instagram</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <img src="assets/logo.png" alt="VG Indumentaria" class="footer__logo">
+  <p class="footer__text">VG Indumentaria — indumentaria deportiva</p>
+  <p class="footer__note">Este sitio no procesa pagos. Las consultas de precio y disponibilidad se realizan por WhatsApp o Instagram.</p>
+  <p class="footer__credit">Desarrollado por <span>HighSoftware</span></p>
+</footer>
+
+<!-- Carrito -->
+<div class="overlay" id="overlay"></div>
+<aside class="cart" id="cart" aria-hidden="true">
+  <div class="cart__header">
+    <h2>Tu selección</h2>
+    <button class="cart__close" id="cartClose" aria-label="Cerrar">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+
+  <div class="cart__items" id="cartItems"></div>
+  <p class="cart__empty" id="cartEmpty">Todavía no agregaste productos.</p>
+
+  <div class="cart__footer" id="cartFooter">
+    <div class="cart__total">
+      <span>Total estimado</span>
+      <strong id="cartTotal">$0</strong>
+    </div>
+    <p class="cart__note">Precio orientativo según catálogo. Confirmamos por mensaje.</p>
+    <button class="btn btn--primary btn--full" id="waCart">Consultar por WhatsApp</button>
+    <button class="btn btn--outline btn--full" id="igCart">Consultar por Instagram</button>
+  </div>
+</aside>
+
+<!-- Vista rápida de producto -->
+<div class="modal-overlay" id="modalOverlay"></div>
+<div class="modal" id="productModal" aria-hidden="true">
+  <button class="modal__close" id="modalClose" aria-label="Cerrar">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+  <div class="modal__content" id="modalContent"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="./script.js"></script>
+</body>
+</html>
